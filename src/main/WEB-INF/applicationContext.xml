@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Cấu hình cho annotation controller -->
+	<mvc:annotation-driven />
+	
+    <!-- Chỉ ra đường dẫn base package của ứng dụng -->
+	<context:component-scan base-package="springcommunity.demo" />
+	
+	<!-- Cấu hình cho view, chỉ map những file view nằm trong thư mục /WEB-INF/views/ và có đuôi là jsp -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+    <!-- Chuyển tất cả request từ thư mục web root / về file index ở view -->
+	<mvc:view-controller path="/" view-name="index" />
+
+	<!-- Cấu hình đường dẫn cho các file ảnh, js và css -->
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	
+		
+</beans>
